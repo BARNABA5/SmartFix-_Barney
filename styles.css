@@ -7,9 +7,9 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background:url("1jpg") no-repeat center center fixed;
+  background:url("ool\ \(1\).jpg") no-repeat center center fixed;
   background-size: cover;
-  color: #fff;
+  color: #dfe0e2;
   padding: 15px;
   min-height: 100vh;
 }
@@ -17,7 +17,7 @@ body {
 .phone-app {
   max-width: 500px;
   margin: auto;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(20, 20, 20, 0.6);
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
@@ -63,7 +63,7 @@ select {
   flex: 1 1 45%;
   padding: 12px;
   font-size: 0.95rem;
-  background-color: #4CAF50;
+  background-color: #072f85;
   border: none;
   border-radius: 10px;
   color: white;
