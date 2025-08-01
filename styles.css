@@ -1,0 +1,119 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background:url("ool(1).jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  padding: 15px;
+  min-height: 100vh;
+}
+
+.phone-app {
+  max-width: 500px;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+}
+
+header h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+header h2 {
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+label {
+  display: block;
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #fff;
+}
+
+select {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.button-group button {
+  flex: 1 1 45%;
+  padding: 12px;
+  font-size: 0.95rem;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.button-group button:hover {
+  background-color: #388e3c;
+}
+
+section {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+}
+
+#settingsPanel label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+#history {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+ul li {
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .button-group button {
+    font-size: 1rem;
+    padding: 14px;
+  }
+
+  select {
+    font-size: 1rem;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  header h2 {
+    font-size: 1rem;
+  }
+}
