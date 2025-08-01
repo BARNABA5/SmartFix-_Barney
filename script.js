@@ -361,13 +361,13 @@ stepFix.innerHTML = `<strong>🛠️ Step-by-Step Fix:</strong><br>${steps
 // ................Prestige Tips Feature for SmartFix Barney App.......................
 const prestigeTips = [
   "📲 ....*To Use Split Screen*: Open the recent apps menu, tap the app icon, and select 'Split screen' to multitask like a pro!",
-  "📌 .....*Whant to do App Pinning*: Go to Settings then >Security then > App Pinning. Pin an app to avoid distractions or lock kids to a single app.",
-  "🕶️ .....* Shift Storage to SD card   eeh?*:Go to settings > then System> and now go to Developers option,Scroll down to Standby Apps,then select (Force allow apps on External).",
-  "🧠 .....*To get an Adaptive Battery*: Go to Settings then  > Battery then > Adaptive Battery. Let Android learn your habits and extend battery life.",
-  "📺 ......*To get Picture-in-Picture (PiP)*: Where you can Watch videos while multitasking.. Supported apps (like YouTube Premium) shrink into a floating window.",
-  "🎮 ......*To set Game Mode*: Check Settings then > Special Features (developers option )then > Game Mode. Boost performance and block notifications during gaming.",
-  "📶 ......*To set Wi-Fi Sharing via QR Code*: In Wi-Fi settings, tap the connected network and generate a QR code to share access easily.",
-  "🧭 ......*Gesture Navigation*: Enable full-screen gesture navigation in Settings > System > Gestures.",
+  "📌 .....*Whant to do App Pinning*: Go to Settings then security then App Pinning. Pin an app to avoid distractions or lock kids to a single app.",
+  "🕶️ .....* Shift Storage to SD card *:Go to settings then System  and now go to Developers option,Scroll down to Standby Apps,then select (Force allow apps on External).",
+  "🧠 .....*To get an Adaptive Battery*: Go to Settings then Battery then Adaptive Battery. Thi let`s Android learn your habits and extend battery life.",
+  "📺 ......*To get Picture-in-Picture (P-i-P)*: Where you can Watch videos while multitasking.. Supported apps (like YouTube Premium) shrink into a floating window.",
+  "🎮 ......*To set Game Mode*: Check Settings then  Special Features (developers option )then Game Mode. Boost performance and block notifications during gaming.",
+  "📶 ......*To set Wi-Fi Sharing via QR Code*: In Wi-Fi settings, tap the connected network  icon that says share and it opens a QR code to share access easily.",
+  "🧭 ......*Gesture Navigation*: Enable full-screen gesture navigation go to Settings then  System then Gestures.",
   "🔕 ......*Digital Wellbeing & Focus Mode*: Monitor app usage, set screen time limits, and block distractions with Focus Mode.",
   "🎙️ .......*Voice Access*:To disable Talk Back which can be sometimes anoying,, Make sure to double tap on the section you whant to choose."
 ];
