@@ -1,179 +1,399 @@
-
-  function speak(text) {
+// Speak text with speech synthesis, if supported
+function speak(text) {
+  if ('speechSynthesis' in window) {
     const voice = new SpeechSynthesisUtterance(text);
     speechSynthesis.speak(voice);
+  } else {
+    console.warn("Speech synthesis not supported");
   }
-
-  function diagnoseIssue() {
-    const issue = document.getElementById("issue").value;
-    let diagnosis = "";
-
-    switch (issue) {
-      case "battery":
-        diagnosis = "Your battery may be draining fast due to background apps, location services, or high brightness.";
-        break;
-      case "charging":
-        diagnosis = "Slow charging might be caused by a faulty cable, adapter, or active apps while charging.";
-        break;
-      case "auto-restart":
-        diagnosis = "Automatic restarts may be due to system crashes, corrupted apps, or hardware problems.";
-        break;
-      case "charging-port":
-        diagnosis = "Your charging port may be blocked or damaged. Clean it gently or visit a technician.";
-        break;
-
-      case "heating":
-        diagnosis = "Phone heating up can result from heavy gaming or background apps, so it's wise to investigate the phone's temperature and what you were doing before it crashed. ";
-        break;
-      case "overheating":
-        diagnosis = "Overheating during calls or gaming could mean your phone is overworked or poorly ventilated.";
-        break;
-      case "freezing":
-        diagnosis = "Freezing or lagging is usually caused by low RAM or outdated software.";
-        break;
-      case "slow-performance":
-        diagnosis = "Slow performance may be due to running too many apps or lack of storage, Outdated software or Malware infections.";
-        break;
-
-      case "data-drain":
-        diagnosis = "Data draining fast can be caused by auto-updates, background sync, or video streaming.";
-        break;
-      case "network":
-        diagnosis = "Poor network signal could be from low coverage areas or SIM issues.";
-        break;
-      case "wifi":
-        diagnosis = "Wi-Fi disconnecting often? Try restarting the router or forgetting and reconnecting the network.";
-        break;
-      case "bluetooth":
-        diagnosis = "Bluetooth connection problems might come from interference or pairing errors.";
-        break;
-      case "gps":
-        diagnosis = "GPS not working? Enable high-accuracy mode or reset location services.";
-        break;
-      case "usb":
-        diagnosis = "If USB isn’t recognized, check your cable, port, and enable file transfer mode.";
-        break;
-      case "sim-error":
-        diagnosis = "SIM card not detected? It might be misaligned, damaged, or dirty.";
-        break;
-
-      case "screen":
-        diagnosis = "Cracked or unresponsive screens require replacement or touch calibration.";
-        break;
-      case "camera":
-        diagnosis = "Camera not working? Force stop the app or check if another app is using it.";
-        break;
-      case "sound":
-        diagnosis = "No sound or distortion may come from clogged speakers or software settings.";
-        break;
-      case "mic":
-        diagnosis = "Microphone issues can result from dirt, app permissions, or hardware failure.";
-        break;
-      case "speaker":
-        diagnosis = "Speaker not working? Clean it carefully or check sound settings.";
-        break;
-      case "vibration":
-        diagnosis = "No vibration? Test using settings or check Do Not Disturb mode.";
-        break;
-      case "proximity":
-        diagnosis = "Proximity sensor issues affect screen dimming during calls. Clean the sensor area.";
-        break;
-      case "fingerprint":
-        diagnosis = "Fingerprint sensor may not respond due to dirt,. Additionally, temporary conditions like dry skin, scars, or extreme temperatures can also interfere with fingerprint recognition. .";
-        break;
-      case "face-unlock":
-        diagnosis = "Face unlock not working? Improve lighting or remove glasses/hats.";
-        break;
-
-      case "apps-crashing":
-        diagnosis = "Apps crashing often? Clear cache or reinstall the app.";
-        break;
-      case "update-fail":
-        diagnosis = "System update failed? Check storage and internet, or restart the device and try running it again.";
-        break;
-      case "notifications":
-        diagnosis = "Not receiving notifications? Check app permissions and do not disturb mode.";
-        break;
-      case "touch-issues":
-        diagnosis = "Touchscreen issues may be fixed by restarting or cleaning the screen.";
-        break;
-      case "storage":
-        diagnosis = "Storage full? Delete unused files and apps, and clear cached data.";
-        break;
-        case "Pop-up ads":
-        diagnosis="popup ads can be annoying and may indicate hardware issues or malware. consider using an ad blocker or scanning  your phone for malware, or go to browser settings and disable popups,"
-        break;
-      default:
-        diagnosis = "Please Visit a nearby Technician ,,or  contact Barney Enterprise ,, His Email Address is :shivayilubarnabas@gmail.com";
-    }
-    
-    function showStepFix() {
-  const issue = document.getElementById("issue").value;
-  const stepFix = document.getElementById("stepFix");
-  let steps = "";
-
-  
 }
- 
-    function showStepFix() {
+
+// Phone issues dictionary with diagnosis summaries and step-by-step fixes
+const phoneIssues = {
+  "battery": {
+    diagnosis: "Your battery may be draining fast due to background apps, location services, or high brightness.",
+    steps: [
+      "Reduce screen brightness.",
+      "Close unused background apps.",
+      "Turn off GPS, Bluetooth & Wi-Fi when not in use.",
+      "Enable battery saver mode.",
+      "Update all apps and software."
+    ]
+  },
+  "charging": {
+    diagnosis: "Slow charging might be caused by a faulty cable, adapter, or active apps while charging.",
+    steps: [
+      "Use original charger and cable.",
+      "Clean the charging port gently.",
+      "Avoid using phone while charging.",
+      "Try charging from a different power source.",
+      "Check for software updates."
+    ]
+  },
+  "auto-restart": {
+    diagnosis: "Automatic restarts may be due to system crashes, corrupted apps, or hardware problems.",
+    steps: [
+      "Uninstall recently added apps.",
+      "Check for system updates.",
+      "Perform a virus scan.",
+      "Reset to factory settings if needed.",
+      "Visit technician if issue persists."
+    ]
+  },
+  "charging-port": {
+    diagnosis: "Your charging port may be blocked or damaged. Clean it gently or visit a technician.",
+    steps: [
+      "Inspect port for dust or debris.",
+      "Use a soft brush to clean.",
+      "Try a different cable.",
+      "Restart phone.",
+      "Seek professional repair if loose or damaged."
+    ]
+  },
+  "heating": {
+    diagnosis: "Phone heating up can result from heavy gaming or background apps, so it's wise to investigate the phone's temperature and what you were doing before it crashed.",
+    steps: [
+      "Avoid heavy apps or games.",
+      "Close apps running in background.",
+      "Keep phone in cool environments.",
+      "Remove case during charging.",
+      "Don’t overcharge the phone."
+    ]
+  },
+  "overheating": {
+    diagnosis: "Overheating during calls or gaming could mean your phone is overworked or poorly ventilated.",
+    steps: [
+      "Stop gaming or video calls temporarily.",
+      "Remove phone case.",
+      "Let phone cool down.",
+      "Disable background data.",
+      "Restart device."
+    ]
+  },
+  "freezing": {
+    diagnosis: "Freezing or lagging is usually caused by low RAM or outdated software.",
+    steps: [
+      "Restart your phone.",
+      "Clear cache memory.",
+      "Delete unused apps.",
+      "Update the OS.",
+      "Factory reset as a last resort."
+    ]
+  },
+  "slow-performance": {
+    diagnosis: "Slow performance may be due to running too many apps or lack of storage, outdated software or malware infections.",
+    steps: [
+      "Restart your phone.",
+      "Clear cache memory.",
+      "Delete unused apps.",
+      "Update the OS.",
+      "Factory reset as a last resort."
+    ]
+  },
+  "data-drain": {
+    diagnosis: "Data draining fast can be caused by auto-updates, background sync, or video streaming.",
+    steps: [
+      "Limit background data usage.",
+      "Turn off auto-updates.",
+      "Disable autoplay in social apps.",
+      "Monitor data usage via settings.",
+      "Use data-saving mode."
+    ]
+  },
+  "network": {
+    diagnosis: "Poor network signal could be from low coverage areas or SIM issues.",
+    steps: [
+      "Toggle airplane mode on/off.",
+      "Reinsert SIM card.",
+      "Restart phone.",
+      "Change preferred network type.",
+      "Contact service provider if needed."
+    ]
+  },
+  "wifi": {
+    diagnosis: "Wi-Fi disconnecting often? Try restarting the router or forgetting and reconnecting the network.",
+    steps: [
+      "Forget and reconnect Wi-Fi.",
+      "Restart router.",
+      "Move closer to router.",
+      "Reset network settings.",
+      "Check for system updates."
+    ]
+  },
+  "bluetooth": {
+    diagnosis: "Bluetooth connection problems might come from interference or pairing errors.",
+    steps: [
+      "Toggle Bluetooth off/on.",
+      "Unpair and re-pair device.",
+      "Restart phone.",
+      "Ensure the other device is in pairing mode.",
+      "Clear Bluetooth cache."
+    ]
+  },
+  "gps": {
+    diagnosis: "GPS not working? Enable high-accuracy mode or reset location services.",
+    steps: [
+      "Enable high accuracy mode.",
+      "Restart phone.",
+      "Calibrate using Maps app.",
+      "Turn GPS off and back on.",
+      "Update location services."
+    ]
+  },
+  "usb": {
+    diagnosis: "If USB isn’t recognized, check your cable, port, and enable file transfer mode.",
+    steps: [
+      "Use original USB cable.",
+      "Enable USB file transfer mode.",
+      "Try another USB port or PC.",
+      "Restart both devices.",
+      "Check USB settings under Developer Options."
+    ]
+  },
+  "sim-error": {
+    diagnosis: "SIM card not detected? It might be misaligned, damaged, or dirty.",
+    steps: [
+      "Reinsert SIM card.",
+      "Clean SIM card with dry cloth.",
+      "Try SIM in another phone.",
+      "Toggle airplane mode.",
+      "Replace if SIM is damaged."
+    ]
+  },
+  "pop-up-ads": {
+    diagnosis: "Popup ads can be annoying and may indicate malware. Consider using an ad blocker or scanning your phone for malware, or disable popups in browser settings.",
+    steps: [
+      "Uninstall suspicious apps.",
+      "Use an ad blocker.",
+      "Scan phone for malware.",
+      "Don’t click unknown links.",
+      "Reset browser or install cleaner app."
+    ]
+  },
+  "screen": {
+    diagnosis: "Cracked or unresponsive screens require replacement or touch calibration.",
+    steps: [
+      "Check for software updates.",
+      "Restart phone.",
+      "If cracked, consider screen replacement.",
+      "Clean screen with a microfiber cloth.",
+      "Test touch sensitivity in settings."
+    ]
+  },
+  "camera": {
+    diagnosis: "Camera not working? Force stop the app or check if another app is using it.",
+    steps: [
+      "Restart the camera app.",
+      "Clear camera app cache.",
+      "Check for software updates.",
+      "Remove any camera lens cover.",
+      "If hardware issue, visit a technician."
+    ]
+  },
+  "sound": {
+    diagnosis: "No sound or distortion may come from clogged speakers or software settings.",
+    steps: [
+      "Check volume settings.",
+      "Restart phone.",
+      "Clean speaker grills gently.",
+      "Test with headphones.",
+      "If no sound, consider hardware repair."
+    ]
+  },
+  "mic": {
+    diagnosis: "Microphone issues can result from dirt, app permissions, or hardware failure.",
+    steps: [
+      "Check app permissions for microphone.",
+      "Restart phone.",
+      "Clean microphone area gently.",
+      "Test with voice recorder app.",
+      "If still not working, visit a technician."
+    ]
+  },
+  "speaker": {
+    diagnosis: "Speaker not working? Clean it carefully or check sound settings.",
+    steps: [
+      "Check volume settings.",
+      "Restart phone.",
+      "Clean speaker grills gently.",
+      "Test with headphones.",
+      "If no sound, consider hardware repair."
+    ]
+  },
+  "vibration": {
+    diagnosis: "No vibration? Test using settings or check Do Not Disturb mode.",
+    steps: [
+      "Check vibration settings in sound settings.",
+      "Restart phone.",
+      "Test vibration using settings or a test app.",
+      "Ensure Do Not Disturb mode is off.",
+      "If still not working, visit a technician."
+    ]
+  },
+  "proximity": {
+    diagnosis: "Proximity sensor issues affect screen dimming during calls. Clean the sensor area.",
+    steps: [
+      "Clean the proximity sensor area (usually near the front camera).",
+      "Restart phone.",
+      "Test during calls to see if screen dims.",
+      "Check for software updates.",
+      "If still not working, visit a technician."
+    ]
+  },
+  "fingerprint": {
+    diagnosis: "Fingerprint sensor may not respond due to dirt. Additionally, dry skin, scars, or extreme temperatures can interfere with recognition.",
+    steps: [
+      "Clean the fingerprint sensor gently.",
+      "Re-register your fingerprint in settings.",
+      "Ensure your fingers are dry and clean.",
+      "Restart phone.",
+      "If still not working, visit a technician."
+    ]
+  },
+  "face-unlock": {
+    diagnosis: "Face unlock not working? Improve lighting or remove glasses/hats.",
+    steps: [
+      "Ensure good lighting conditions.",
+      "Remove any obstructions (glasses, hats).",
+      "Re-register your face in settings.",
+      "Restart phone.",
+      "If still not working, visit a technician."
+    ]
+  },
+  "apps-crashing": {
+    diagnosis: "Apps crashing often? Clear cache or reinstall the app.",
+    steps: [
+      "Clear app cache and data.",
+      "Uninstall and reinstall the app.",
+      "Check for app updates.",
+      "Restart phone.",
+      "If issue persists, report to app developer."
+    ]
+  },
+  "update-fail": {
+    diagnosis: "System update failed? Check storage and internet, or restart the device and try again.",
+    steps: [
+      "Ensure sufficient storage space.",
+      "Check internet connection.",
+      "Restart phone and try again.",
+      "Clear cache of the update app (if applicable).",
+      "If still failing, consider factory reset or visit a technician."
+    ]
+  },
+  "notifications": {
+    diagnosis: "Not receiving notifications? Check app permissions and do not disturb mode.",
+    steps: [
+      "Check app notification settings.",
+      "Ensure Do Not Disturb mode is off.",
+      "Restart phone.",
+      "Clear cache of the affected app.",
+      "If still not receiving, reinstall the app."
+    ]
+  },
+  "touch-issues": {
+    diagnosis: "Touchscreen issues may be fixed by restarting or cleaning the screen.",
+    steps: [
+      "Restart your phone.",
+      "Clean the screen with a microfiber cloth.",
+      "Check for software updates.",
+      "Remove any screen protector or case that might interfere.",
+      "If still unresponsive, visit a technician."
+    ]
+  },
+  "storage": {
+    diagnosis: "Storage full? Delete unused files and apps, and clear cached data.",
+    steps: [
+      "Delete unused apps and files.",
+      "Clear cache of apps.",
+      "Move files to cloud storage or SD card.",
+      "Use storage management tools in settings.",
+      "Factory reset as a last resort."
+    ]
+  }
+};
+
+// Main function to diagnose the selected issue
+function diagnoseIssue() {
   const issue = document.getElementById("issue").value;
+  const output = document.getElementById("output");
+
+  if (!issue) {
+    output.textContent = "Please select an issue to diagnose.";
+    document.getElementById("stepFix").style.display = "none";
+    document.getElementById("stepFix").innerHTML = "";
+    return;
+  }
+
+  const issueData = phoneIssues[issue];
+  if (!issueData) {
+    output.textContent = "Sorry, no diagnosis found for this issue.";
+    document.getElementById("stepFix").style.display = "none";
+    document.getElementById("stepFix").innerHTML = "";
+    return;
+  }
+
+  // Show diagnosis summary
+  output.innerHTML = `<h3>Diagnosis for "${document.getElementById("issue").selectedOptions[0].text}":</h3><p>${issueData.diagnosis}</p>`;
+  speak(issueData.diagnosis);
+
+  // Show step-by-step fixes
+  showStepFix(issueData);
+
+  // Save to history
+  if (issue) {
+    const historyItem = document.createElement("li");
+    historyItem.textContent = `📌 ${document.querySelector("#issue option:checked").textContent} - ${issueData.diagnosis}`;
+    document.getElementById("history").appendChild(historyItem);
+  }
+}
+
+// Show the step-by-step fixes for the issue
+function showStepFix(issueData) {
   const stepFix = document.getElementById("stepFix");
-  let steps = "";
-    }
-
-
-    document.getElementById("output").innerText = diagnosis;
-    speak(diagnosis);
-
-    // Save to history
-    if (issue) {
-      const historyItem = document.createElement("li");
-      historyItem.textContent = `📌 ${document.querySelector("#issue option:checked").textContent} - ${diagnosis}`;
-      document.getElementById("history").appendChild(historyItem);
-    }
+  if (!issueData || !issueData.steps || issueData.steps.length === 0) {
+    stepFix.style.display = "block";
+    stepFix.innerHTML = `<p>Sorry, no step-by-step fixes available for this issue yet.</p>`;
+    return;
   }
 
-  // Placeholder functions for other buttons (you can update them later)
-  function showStepFix() {
-    document.getElementById("stepFix").style.display = "block";
-    document.getElementById("stepFix").innerText = "🔧 A weekly restart can help clear out background processes,resolve memory issues, and ensure your phone runs more efficiently , . ";
-  }
+  const formattedSteps = issueData.steps
+    .map((step, index) => `<li>${index + 1}. ${step}</li>`)
+    .join("");
 
-  function showTips() {
-    document.getElementById("tips").style.display = "block";
-    document.getElementById("tips").innerText = "💡 Keep your phone updated and clean background apps regularly!";
-  }
+  stepFix.style.display = "block";
+  stepFix.innerHTML = `
+    <h3>Step-by-step Fix for "${document.getElementById("issue").selectedOptions[0].text}":</h3>
+    <ol>${formattedSteps}</ol>
+  `;
 
-  function showRestartReminder() {
-    document.getElementById("restart").style.display = "block";
-    document.getElementById("restart").innerText = "🔄 Restart your phone at least once a week to keep it running smoothly.";
-  }
+  // Optional: speak the steps concatenated as a string
+  speak(issueData.steps.join(". "));
+}
 
+// Clear all diagnosis outputs and history
 function clearDiagnosis() {
-  // Clear main diagnosis output
-  document.getElementById("output").innerText = "";
-
-  // Hide and clear all other sections
+  document.getElementById("output").innerHTML = "";
   document.getElementById("stepFix").style.display = "none";
+  document.getElementById("stepFix").innerHTML = "";
   document.getElementById("tips").style.display = "none";
+  document.getElementById("tips").innerHTML = "";
   document.getElementById("restart").style.display = "none";
+  document.getElementById("restart").innerHTML = "";
   document.getElementById("scanner").style.display = "none";
+  document.getElementById("scanner").innerHTML = "";
   document.getElementById("shareStatus").innerText = "";
-
-  // Clear diagnosis history list
   document.getElementById("history").innerHTML = "";
-
-  // Reset the dropdown
   document.getElementById("issue").value = "";
-
-  // Optional: stop any ongoing voice speech
   speechSynthesis.cancel();
 }
+
+// Settings panel toggle
 function showSettings() {
   const panel = document.getElementById("settingsPanel");
   panel.style.display = panel.style.display === "none" ? "block" : "none";
 }
 
+// Popup notification toggle
 function toggleNotifications() {
   const isEnabled = document.getElementById("popupToggle").checked;
   const status = document.getElementById("popupStatus");
@@ -185,19 +405,18 @@ function toggleNotifications() {
     status.innerText = "❌ Popup notification disabled.";
   }
 }
+
+// Show popup message once per 7 days max
 function showPopup() {
   const lastShown = localStorage.getItem("popupLastShown");
   const now = new Date();
 
-  // If shown within the last 7 days, don't show again
   if (lastShown && (now - new Date(lastShown)) < 7 * 24 * 60 * 60 * 1000) {
     return;
   }
 
-  // Save current time as last shown
   localStorage.setItem("popupLastShown", now.toISOString());
 
-  // Show the popup
   const popup = document.createElement("div");
   popup.innerText = "🔔 Hello from SmartFix Studio.. please give us your feedback about this Web App!";
   popup.style.position = "fixed";
@@ -216,160 +435,19 @@ function showPopup() {
     popup.remove();
   }, 4000);
 }
-function showStepFix() {
-  const issue = document.getElementById("issue").value;
-  const stepFix = document.getElementById("stepFix");
-  let steps = "";
 
-  switch (issue) {
-    case "battery":
-      steps = `1. Reduce screen brightness. 2. Close unused background apps. 3. Turn off GPS, Bluetooth & Wi-Fi when not in use. 4. Enable battery saver mode. 5. Update all apps and software.`;
-      break;
-
-    case "charging":
-      steps = `1. Use original charger and cable. 2. Clean the charging port gently. 3. Avoid using phone while charging. 4. Try charging from a different power source. 5. Check for software updates.`;
-      break;
-
-    case "auto-restart":
-      steps = `1. Uninstall recently added apps. 2. Check for system updates. 3. Perform a virus scan. 4. Reset to factory settings if needed. 5. Visit technician if issue persists.`;
-      break;
-
-    case "charging-port":
-      steps = `1. Inspect port for dust or debris. 2. Use a soft brush to clean. 3. Try a different cable. 4. Restart phone. 5. Seek professional repair if loose or damaged.`;
-      break;
-
-    case "heating":
-      steps = `1. Avoid heavy apps or games. 2. Close apps running in background. 3. Keep phone in cool environments. 4. Remove case during charging. 5. Don’t overcharge the phone.`;
-      break;
-
-    case "overheating":
-      steps = `1. Stop gaming or video calls temporarily. 2. Remove phone case. 3. Let phone cool down. 4. Disable background data. 5. Restart device.`;
-      break;
-
-    case "freezing":
-    case "slow-performance":
-      steps = `1. Restart your phone. 2. Clear cache memory. 3. Delete unused apps. 4. Update the OS. 5. Factory reset as a last resort.`;
-      break;
-
-    case "data-drain":
-      steps = `1. Limit background data usage. 2. Turn off auto-updates. 3. Disable autoplay in social apps. 4. Monitor data usage via settings. 5. Use data-saving mode.`;
-      break;
-
-    case "network":
-      steps = `1. Toggle airplane mode on/off. 2. Reinsert SIM card. 3. Restart phone. 4. Change preferred network type. 5. Contact service provider if needed.`;
-      break;
-
-    case "wifi":
-      steps = `1. Forget and reconnect Wi-Fi. 2. Restart router. 3. Move closer to router. 4. Reset network settings. 5. Check for system updates.`;
-      break;
-
-    case "bluetooth":
-      steps = `1. Toggle Bluetooth off/on. 2. Unpair and re-pair device. 3. Restart phone. 4. Ensure the other device is in pairing mode. 5. Clear Bluetooth cache.`;
-      break;
-
-    case "gps":
-      steps = `1. Enable high accuracy mode. 2. Restart phone. 3. Calibrate using Maps app. 4. Turn GPS off and back on. 5. Update location services.`;
-      break;
-
-    case "usb":
-      steps = `1. Use original USB cable. 2. Enable USB file transfer mode. 3. Try another USB port or PC. 4. Restart both devices. 5. Check USB settings under Developer Options.`;
-      break;
-
-    case "sim-error":
-      steps = `1. Reinsert SIM card. 2. Clean SIM card with dry cloth. 3. Try SIM in another phone. 4. Toggle airplane mode. 5. Replace if SIM is damaged.`;
-      break;
-
-    case "Pop-up ads":
-      steps = `1. Uninstall suspicious apps. 2. Use an ad blocker. 3. Scan phone for malware. 4. Don’t click unknown links. 5. Reset browser or install cleaner app.`;
-      break; 
-      case"Full storage":
-      steps =`1. Delete unused apps and files.2. clear cashe and data of apps .3. Move files to cloud storage or SD card.4. Use storage management tools in setting .5.Factory reset as a last resort.`;
-break;
-case "screen":
-      steps = `1. Check for software updates. 2. Restart phone. 3. If cracked, consider screen replacement. 4. Clean screen with a microfiber cloth. 5. Test touch sensitivity in settings.`;
-      break;
-      case "camera":
-      steps = `1. Restart the camera app. 2. Clear camera app cache. 3. Check for software updates. 4. Remove any camera lens cover. 5. If hardware issue, visit a technician.`;
-      break;
-    case "sound":
-      steps = `1. Check volume settings. 2. Restart phone. 3. Clean speaker grills gently. 4. Test with headphones. 5. If no sound, consider hardware repair.`;
-      break;
-    case "mic":
-      steps = `1. Check app permissions for microphone. 2. Restart phone. 3. Clean microphone area gently. 4. Test with voice recorder app. 5. If still not working, visit a technician.`;
-      break;
-    case "speaker":
-      steps = `1. Check volume settings. 2. Restart phone. 3. Clean speaker grills gently. 4. Test with headphones. 5. If no sound, consider hardware repair.`;
-      break;
-    case "vibration":
-      steps = `1. Check vibration settings in sound settings. 2. Restart phone. 3. Test vibration using settings or a test app. 4. Ensure Do Not Disturb mode is off. 5. If still not working, visit a technician.`;
-    break;
-    case "proximity":
-      steps = `1. Clean the proximity sensor area (usually near the front camera). 2. Restart phone. 3. Test during calls to see if screen dims. 4. Check for software updates. 5. If still not working, visit a technician.`;
-      break;
-case "fingerprint":
-      steps = `1. Clean the fingerprint sensor gently. 2. Re-register your fingerprint in settings. 3. Ensure your fingers are dry and clean. 4. Restart phone. 5. If still not working, visit a technician.`;
-      break;
-    case "face-unlock":
-case "face-unlock":
-      steps = `1. Ensure good lighting conditions. 2. Remove any obstructions (glasses, hats). 3. Re-register your face in settings. 4. Restart phone. 5. If still not working, visit a technician.`;
-      break;
-    case "apps-crashing":
-      steps = `1. Clear app cache and data. 2. Uninstall and reinstall the app. 3. Check for app updates. 4. Restart phone. 5. If issue persists, report to app developer.`;
-      break;
-    case "update-fail":
-      steps = `1. Ensure sufficient storage space. 2. Check internet connection. 3. Restart phone and try again. 4. Clear cache of the update app (if applicable). 5. If still failing, consider factory reset or visit a technician.`;
-      break;
-    case "notifications":
-      steps = `1. Check app notification settings. 2. Ensure Do Not Disturb mode is off. 3. Restart phone. 4. Clear cache of the affected app. 5. If still not receiving, reinstall the app.`;
-      break;
-    case "touch-issues":
-      steps = `1. Restart your phone. 2. Clean the screen with a microfiber cloth. 3. Check for software updates. 4. Remove any screen protector or case that might interfere. 5. If still unresponsive, visit a technician.`;
-      break;
-    case "storage":
-      steps = `1. Delete unused apps and files. 2. Clear cache of apps. 3. Move files to cloud storage or SD card. 4. Use storage management tools in settings. 5. Factory reset as a last resort.`;
-      break;
-    case "Pop-up ads":
-      steps = `1. Uninstall suspicious apps. 2. Use an ad blocker. 3. Scan phone for malware. 4. Don’t click unknown links. 5. Reset browser or install cleaner app.`;
-      break;
-    case "Full storage":
-      steps = `1. Delete unused apps and files. 2. Clear cache of apps. 3. Move files to cloud storage or SD card. 4. Use storage management tools in settings. 5. Factory reset as a last resort.`;
-      break;
-    case "scanner":
-      steps = `1. Open the scanner app. 2. Align the document within the frame. 3. Tap the capture button. 4. Adjust settings for clarity if needed. 5. Save or share the scanned document.`;
-      break;
-
-
-    default:
-      steps = `Please select an issue to view step-by-step fix.`;
-  }
-
-  // Output to the page with formatting
-  
-stepFix.innerHTML = `<strong>🛠️ Step-by-Step Fix:</strong><br>${steps
-  .split(/\d\.\s+/)
-  .filter(step => step.trim() !== '')
-  .map((step, index) => `${index + 1}. ${step.trim()}`)
-  .join('<br>')}`;
-
-  // Make it visible
-  stepFix.style.display = "block";
-
-  // 🔊 Speak the steps
-  speak(steps);
-}
-
-// ................Prestige Tips Feature for SmartFix Barney App.......................
+// Prestige tips array and functions
 const prestigeTips = [
-  "📲 ....*To Use Split Screen*: Open the recent apps menu, tap the app icon, and select 'Split screen' to multitask like a pro!",
-  "📌 .....*Whant to do App Pinning*: Go to Settings then security then App Pinning. Pin an app to avoid distractions or lock kids to a single app.",
-  "🕶️ .....* Shift Storage to SD card *:Go to settings then System  and now go to Developers option,Scroll down to Standby Apps,then select (Force allow apps on External).",
-  "🧠 .....*To get an Adaptive Battery*: Go to Settings then Battery then Adaptive Battery. Thi let`s Android learn your habits and extend battery life.",
-  "📺 ......*To get Picture-in-Picture (P-i-P)*: Where you can Watch videos while multitasking.. Supported apps (like YouTube Premium) shrink into a floating window.",
-  "🎮 ......*To set Game Mode*: Check Settings then  Special Features (developers option )then Game Mode. Boost performance and block notifications during gaming.",
-  "📶 ......*To set Wi-Fi Sharing via QR Code*: In Wi-Fi settings, tap the connected network  icon that says share and it opens a QR code to share access easily.",
-  "🧭 ......*Gesture Navigation*: Enable full-screen gesture navigation go to Settings then  System then Gestures.",
-  "🔕 ......*Digital Wellbeing & Focus Mode*: Monitor app usage, set screen time limits, and block distractions with Focus Mode.",
-  "🎙️ .......*Voice Access*:To disable Talk Back which can be sometimes anoying,, Make sure to double tap on the section you whant to choose."
+  "📲 To use Split Screen: Open recent apps menu, tap app icon, and select 'Split screen'.",
+  "📌 To do App Pinning: Go to Settings > Security > App Pinning.",
+  "🕶️ Shift Storage to SD card: Enable 'Force allow apps on External' under Developer Options.",
+  "🧠 Adaptive Battery: Go to Settings > Battery > Adaptive Battery to extend battery life.",
+  "📺 Picture-in-Picture: Supported apps like YouTube allow multitasking with floating video windows.",
+  "🎮 Game Mode: Boost performance and block notifications during gaming in Settings > Special Features.",
+  "📶 Wi-Fi Sharing via QR Code: Share Wi-Fi easily from network settings.",
+  "🧭 Gesture Navigation: Enable full-screen gesture navigation in Settings > System > Gestures.",
+  "🔕 Digital Wellbeing & Focus Mode: Set app limits and block distractions.",
+  "🎙️ Voice Access: Disable TalkBack by double-tapping the section you want to choose."
 ];
 
 function showPrestigeTips() {
@@ -377,26 +455,27 @@ function showPrestigeTips() {
   const randomTip = prestigeTips[Math.floor(Math.random() * prestigeTips.length)];
   tipsSection.style.display = "block";
   tipsSection.innerText = randomTip;
-  speak(randomTip); // Optional voice output
+  speak(randomTip);
 }
 
 function startPrestigeTipLoop(interval = 10000) {
-  showPrestigeTips(); // Show one immediately
-  setInterval(showPrestigeTips, interval); // Show a new one every X ms
+  showPrestigeTips();
+  setInterval(showPrestigeTips, interval);
 }
+
+// Phone health scanner simulation
 function scanPhone() {
   const scanner = document.getElementById('scanner');
   scanner.style.display = 'block';
   scanner.innerHTML = "🔍 Scanning... Please wait...";
 
-  setTimeout(() => {
-    const battery = getBatteryEstimate();
-    const storage = getStorageEstimate();
+  setTimeout(async () => {
+    const battery = await getBatteryEstimate();
+    const storage = await getStorageEstimate();
     const speed = simulateSpeedCheck();
     const backgroundApps = simulateBackgroundApps();
 
-    // Simulate phone uptime
-    const mockUptimeHours = Math.floor(Math.random() * 120); // e.g. 0–120 hours
+    const mockUptimeHours = Math.floor(Math.random() * 120);
     let uptimeMessage = "";
 
     if (mockUptimeHours < 24) {
@@ -420,44 +499,10 @@ function scanPhone() {
   }, 1500);
 }
 
-// Simulate Battery
-function getBatteryEstimate() {
+// Async get battery estimate
+async function getBatteryEstimate() {
   if ('getBattery' in navigator) {
-    navigator.getBattery().then(battery => {
+    try {
+      const battery = await navigator.getBattery();
       const percent = Math.round(battery.level * 100);
-      const status = battery.charging ? "Charging" : "Not Charging";
-      alert(`Battery: ${percent}% - ${status}`);
-    });
-    return "🔋 Battery status displayed in alert info.";
-  } else {
-    return "Battery info not supported by this browser.";
-  }
-}
-
-// Simulate Storage
-function getStorageEstimate() {
-  if ('storage' in navigator && 'estimate' in navigator.storage) {
-    navigator.storage.estimate().then(estimate => {
-      const used = (estimate.usage / (1024 * 1024)).toFixed(1);
-      const quota = (estimate.quota / (1024 * 1024)).toFixed(1);
-      const percent = ((estimate.usage / estimate.quota) * 100).toFixed(1);
-      alert(`Used: ${used} MB / ${quota} MB (${percent}%)`);
-    });
-    return "💾 Storage info displayed in alert info.";
-  } else {
-    return "Storage info not supported by this browser.";
-  }
-}
-
-// Simulate Background Apps
-function simulateBackgroundApps() {
-  const mockApps = Math.floor(Math.random() * 6) + 2;
-  return `${mockApps} apps running in background (estimated)`;
-}
-
-// Simulate Speed
-function simulateSpeedCheck() {
-  const speeds = ["Excellent ⚡", "Moderate 🚶", "Slow 🐢"];
-  const randomSpeed = speeds[Math.floor(Math.random() * speeds.length)];
-  return randomSpeed;
-}
+      const status = battery.charging ? "Charging"
