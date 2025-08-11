@@ -319,16 +319,14 @@ function diagnoseIssue() {
 
   if (!issue) {
     output.textContent = "Please select an issue to diagnose.";
-    document.getElementById("stepFix").style.display = "none";
-    document.getElementById("stepFix").innerHTML = "";
+    hideAllDetails();
     return;
   }
 
   const issueData = phoneIssues[issue];
   if (!issueData) {
     output.textContent = "Sorry, no diagnosis found for this issue.";
-    document.getElementById("stepFix").style.display = "none";
-    document.getElementById("stepFix").innerHTML = "";
+    hideAllDetails();
     return;
   }
 
@@ -340,11 +338,18 @@ function diagnoseIssue() {
   showStepFix(issueData);
 
   // Save to history
-  if (issue) {
-    const historyItem = document.createElement("li");
-    historyItem.textContent = `📌 ${document.querySelector("#issue option:checked").textContent} - ${issueData.diagnosis}`;
-    document.getElementById("history").appendChild(historyItem);
-  }
+  const historyList = document.getElementById("history");
+  const historyItem = document.createElement("li");
+  historyItem.textContent = `📌 ${document.getElementById("issue").selectedOptions[0].text} - ${issueData.diagnosis}`;
+  historyList.appendChild(historyItem);
+}
+
+function hideAllDetails() {
+  ["stepFix", "tips", "restart", "scanner"].forEach(id => {
+    const el = document.getElementById(id);
+    el.style.display = "none";
+    el.innerHTML = "";
+  });
 }
 
 // Show the step-by-step fixes for the issue
@@ -366,7 +371,6 @@ function showStepFix(issueData) {
     <ol>${formattedSteps}</ol>
   `;
 
-  // Optional: speak the steps concatenated as a string
   speak(issueData.steps.join(". "));
 }
 
@@ -419,15 +423,17 @@ function showPopup() {
 
   const popup = document.createElement("div");
   popup.innerText = "🔔 Hello from SmartFix Studio.. please give us your feedback about this Web App!";
-  popup.style.position = "fixed";
-  popup.style.bottom = "20px";
-  popup.style.right = "20px";
-  popup.style.backgroundColor = "#222";
-  popup.style.color = "#fff";
-  popup.style.padding = "10px 15px";
-  popup.style.borderRadius = "10px";
-  popup.style.boxShadow = "0 4px 8px rgba(0,0,0,0.3)";
-  popup.style.zIndex = 1000;
+  Object.assign(popup.style, {
+    position: "fixed",
+    bottom: "20px",
+    right: "20px",
+    backgroundColor: "#222",
+    color: "#fff",
+    padding: "10px 15px",
+    borderRadius: "10px",
+    boxShadow: "0 4px 8px rgba(0,0,0,0.3)",
+    zIndex: 1000,
+  });
 
   document.body.appendChild(popup);
 
@@ -445,10 +451,9 @@ const prestigeTips = [
   "📺 Picture-in-Picture: Supported apps like YouTube allow multitasking with floating video windows.",
   "🎮 Game Mode: Boost performance and block notifications during gaming in Settings > Special Features.",
   "📶 Wi-Fi Sharing via QR Code: Share Wi-Fi easily from network settings.",
-  "🧭 Gesture Navigation: Enable full-screen gesture navigation in Settings > System > Gestures.",
-  "🔕 Digital Wellbeing & Focus Mode: Set app limits and block distractions.",
-  "🎙️ Voice Access: Disable TalkBack by double-tapping the section you want to choose."
-];
+  "🧭 Gesture Navigation: Enable full
+
+
 
 function showPrestigeTips() {
   const tipsSection = document.getElementById("tips");
@@ -506,3 +511,4 @@ async function getBatteryEstimate() {
       const battery = await navigator.getBattery();
       const percent = Math.round(battery.level * 100);
       const status = battery.charging ? "Charging"
+
