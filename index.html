@@ -26,52 +26,96 @@
     <main>
       <label for="issue">👉 Please select your issue:</label>
       <select id="issue">
-        <option value="">-- Not Helped?! --</option>
+        <option value="">-- Not Helped yet!? --</option>
 
-        <optgroup label="🔋 Battery & Power Issues">
-          <option value="battery">🔋 Battery draining fast</option>
-          <option value="charging">⚡ Slow charging</option>
-          <option value="auto-restart">🔁 Phone restarts automatically</option>
-          <option value="charging-port">🔌 Charging port not working</option>
-        </optgroup>
 
-        <optgroup label="🌡️ Heating & Performance">
-          <option value="heating">🔥 Phone heating up</option>
-          <option value="overheating">🌞 Overheating during calls/games</option>
-          <option value="freezing">❄️ Phone freezing or lagging</option>
-          <option value="slow-performance">🐢 Slow performance</option>
-        </optgroup>
+  <optgroup label="🔋 Battery & Power Issues">
+    <option value="battery-drains-quickly">🔋 Battery drains quickly</option>
+    <option value="phone-overheating-charging">🌡️ Phone overheating while charging</option>
+    <option value="slow-charging">⚡ Slow charging</option>
+    <option value="battery-percentage-jumping">📊 Battery percentage stuck or jumping</option>
+    <option value="charging-only-when-off">🔌 Phone only charges when switched off</option>
+    <option value="battery">🔋 Battery draining fast</option>
+    <option value="charging">⚡ Slow charging</option>
+    <option value="auto-restart">🔁 Phone restarts automatically</option>
+    <option value="charging-port">🔌 Charging port not working</option>
+  </optgroup>
 
-        <optgroup label="📡 Connectivity Problems">
-          <option value="data-drain">📶 Data depleting fast</option>
-          <option value="network">📡 Poor network signal</option>
-          <option value="wifi">📶 Wi-Fi disconnecting</option>
-          <option value="bluetooth">🔵 Bluetooth not connecting</option>
-          <option value="gps">🧭 GPS not working</option>
-          <option value="usb">🔗 USB not recognizing device</option>
-          <option value="sim-error">📵 SIM card not detected</option>
-        </optgroup>
+  <optgroup label="🌡️ Heating & Performance">
+    <option value="phone-running-slow">🐢 Phone running slow</option>
+    <option value="apps-crashing-randomly">💥 Apps crashing randomly</option>
+    <option value="screen-freezing">❄️ Screen freezing or unresponsive</option>
+    <option value="overheating-during-gaming">🔥 Overheating during gaming or heavy use</option>
+    <option value="sudden-shutdowns">⚠️ Sudden shutdowns</option>
+    <option value="heating">🔥 Phone heating up</option>
+    <option value="overheating">🌞 Overheating during calls/games</option>
+    <option value="freezing">❄️ Phone freezing or lagging</option>
+    <option value="slow-performance">🐢 Slow performance</option>
+  </optgroup>
 
-        <optgroup label="📷 Hardware Malfunctions">
-          <option value="screen">📱 Cracked or unresponsive screen</option>
-          <option value="camera">📷 Camera not working</option>
-          <option value="sound">🔈 No sound or distorted audio</option>
-          <option value="mic">🎤 Microphone not working</option>
-          <option value="speaker">🔊 Speaker not working</option>
-          <option value="vibration">📳 Vibration not working</option>
-          <option value="proximity">👆 Proximity sensor issues</option>
-          <option value="fingerprint">🛂 Fingerprint not working</option>
-          <option value="face-unlock">😶 Face unlock not working</option>
-          <option value="Pop-up ads">🛑 Pop-up ads appearing</option>
-        </optgroup>
+  <optgroup label="📡 Connectivity Problems">
+    <option value="wifi-not-connecting">📶 Wi-Fi not connecting or dropping</option>
+    <option value="mobile-data-not-working">📡 Mobile data not working</option>
+    <option value="bluetooth-not-pairing">🔵 Bluetooth pairing issues</option>
+    <option value="hotspot-not-working">📶 Hotspot not working</option>
+    <option value="weak-no-signal">📡 Weak or no signal</option>
+    <option value="data-drain">📶 Data depleting fast</option>
+    <option value="network">📡 Poor network signal</option>
+    <option value="wifi">📶 Wi-Fi disconnecting</option>
+    <option value="bluetooth">🔵 Bluetooth not connecting</option>
+    <option value="gps">🧭 GPS not working</option>
+    <option value="usb">🔗 USB not recognizing device</option>
+    <option value="sim-error">📵 SIM card not detected</option>
+  </optgroup>
 
-        <optgroup label="⚙️ Software & App Issues">
-          <option value="apps-crashing">💥 Apps crashing frequently</option>
-          <option value="update-fail">🔄 System update failed</option>
-          <option value="notifications">🔔 Not receiving notifications</option>
-          <option value="touch-issues">👆 Touchscreen not responding</option>
-          <option value="storage">💾 Storage full</option>
-        </optgroup>
+  <optgroup label="📷 Hardware Malfunctions">
+    <option value="flickering-screen">🌈 Flickering screen</option>
+    <option value="screen-too-dim">💡 Screen too dim/brightness not working</option>
+    <option value="ghost-touch">👻 Ghost touch</option>
+    <option value="dead-pixels">⬛ Dead pixels or discoloration</option>
+    <option value="auto-rotation-not-working">🔄 Auto-rotation not working</option>
+    <option value="screen">📱 Cracked or unresponsive screen</option>
+    <option value="camera">📷 Camera not working</option>
+    <option value="sound">🔈 No sound or distorted audio</option>
+    <option value="mic">🎤 Microphone not working</option>
+    <option value="speaker">🔊 Speaker not working</option>
+    <option value="vibration">📳 Vibration not working</option>
+    <option value="proximity">👆 Proximity sensor issues</option>
+    <option value="fingerprint">🛂 Fingerprint not working</option>
+    <option value="face-unlock">😶 Face unlock not working</option>
+    <option value="pop-up-ads">🛑 Pop-up ads appearing</option>
+  </optgroup>
+
+  <optgroup label="⚙️ Software & App Issues">
+    <option value="play-store-not-opening">📲 Play Store not opening</option>
+    <option value="apps-not-updating">🔄 Apps not updating</option>
+    <option value="app-permissions-resetting">🔐 App permissions resetting</option>
+    <option value="boot-loop">🔄 Phone stuck on boot logo (boot loop)</option>
+    <option value="system-update-failing">⚠️ System update failing</option>
+    <option value="apps-crashing">💥 Apps crashing frequently</option>
+    <option value="update-fail">🔄 System update failed</option>
+    <option value="notifications">🔔 Not receiving notifications</option>
+    <option value="touch-issues">👆 Touchscreen not responding</option>
+    <option value="storage">💾 Storage full</option>
+  </optgroup>
+
+  <optgroup label="🔒 Security & Privacy">
+    <option value="forgot-pin">🔑 Forgot PIN or Pattern</option>
+    <option value="fingerprint-issues">🛂 Fingerprint sensor not working</option>
+    <option value="face-unlock-issues">😶 Face unlock not working</option>
+    <option value="malware-infection">🛡️ Device infected with malware</option>
+    <option value="ads-popping-up">🚫 Ads popping up unexpectedly</option>
+  </optgroup>
+
+  <optgroup label="🔧 Other Hardware Problems">
+    <option value="buttons-not-working">🔘 Buttons (Power, Volume) not working</option>
+    <option value="vibrator-not-working">📳 Vibrator not working</option>
+    <option value="proximity-sensor-issues">👆 Proximity sensor problems</option>
+    <option value="sim-card-not-detected">📵 SIM card not detected</option>
+    <option value="usb-not-recognized">🔌 USB connection not recognized</option>
+  </optgroup>
+</select>
+
       </select>
 
       <div class="button-group">
@@ -116,4 +160,5 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
